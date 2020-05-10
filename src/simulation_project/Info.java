@@ -20,6 +20,8 @@ public class Info {
     public int  avarageDemand;
     public int ecpectedDemand;
     
-    public ArrayList<Integer> cumulativeProbaility = new ArrayList<Integer>();
-   
+    public ArrayList<Double> cumulativeProbaility = new ArrayList<Double>();
+    public ArrayList<Integer> intervalRandomNum = new ArrayList<Integer>();
+    
+    int numOfDays;
 }
