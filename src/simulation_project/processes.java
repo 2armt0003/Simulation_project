@@ -48,14 +48,17 @@ public class processes {
         int sum = 0; 
         for(int i = 0; i < info.numOfDays; i++){
            int randNumber = rand.nextInt((100 - 0) + 1) + 0;
+           info.randmNumber.add(randNumber);
            for(int k = 0; i < info.numOfDays; k++){
                if(i == 0){
                    if(randNumber >= 0 && randNumber <= info.intervalRandomNum.get(i))
-                       sum+= randNumber ;
+                       sum+= info.demand.get(i);
+                       info.SimulatedDalyDemand.add(info.demand.get(i));
                    
                }else{
                     if(randNumber > info.intervalRandomNum.get(i-1)&& randNumber <= info.intervalRandomNum.get(i))
-                       sum+= randNumber ;
+                    {sum+=  info.demand.get(i);
+                       info.SimulatedDalyDemand.add(info.demand.get(i));}
                     else 
                         continue;
                    
@@ -64,8 +67,15 @@ public class processes {
         
             }
            info.avarageDemand = sum / info.numOfDays ;
-        
+           
         }
+        int sumexp = 0;
+        for(int i = 0 ; i< info.numOfDays ; i++){
+            sumexp += info.demand.get(i) * info.probaility.get(i);
+                
+         }
+        
+        info.ecpectedDemand = sumexp ;
     }//end fun
     
     

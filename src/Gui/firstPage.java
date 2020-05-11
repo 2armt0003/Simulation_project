@@ -165,7 +165,7 @@ public class firstPage extends javax.swing.JFrame {
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new finalPage().setVisible(true);
+        new finalPage(info).setVisible(true);
     }//GEN-LAST:event_nextActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed

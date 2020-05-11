@@ -6,21 +6,31 @@
 package Gui;
 import simulation_project.*;
 import Gui.*;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author user
  */
 public class finalPage extends javax.swing.JFrame {
-
+    static Info info ;
+    processes proc =new processes();
+    DefaultTableModel tableModel ;
     /**
      * Creates new form finalPage
      */
-    public finalPage() {
+    public finalPage(Info info ) {
         initComponents();
+        tableModel = new DefaultTableModel();
         this.setSize(1200, 720);
         setLocationRelativeTo(null);
         txtev.setEditable(false);
         txtav.setEditable(false);
+        this.info = info;
+        jTable1.setModel(tableModel);
+        tableModel.addColumn("Day");
+        tableModel.addColumn("Randum Numbers");
+        tableModel.addColumn("Simulated Daly Demand");
+        
     }
 
     /**
@@ -85,6 +95,11 @@ public class finalPage extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton1.setText("Simulate");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -182,6 +197,24 @@ public class finalPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtevActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        info.numOfDays = Integer.parseInt(jTextField1.getText());
+        proc.calucSimulatedDalyDemand(info);
+//        for(int i =1 ; i <= info.numOfDays ; i++){
+//            tableModel.addRow(new Object[]{
+//                i,
+//                info.randmNumber.get(i),
+//                info.randmNumber.get(i),
+//                info.SimulatedDalyDemand.get(i)
+//           
+//        
+//        });
+//       }
+       txtav.setText(Integer.toString(info.avarageDemand));
+       txtev.setText(Integer.toString(info.ecpectedDemand));
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
+        
     /**
      * @param args the command line arguments
      */
@@ -212,7 +245,7 @@ public class finalPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new finalPage().setVisible(true);
+                new finalPage(info).setVisible(true);
             }
         });
     }
