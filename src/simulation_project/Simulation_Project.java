@@ -5,6 +5,8 @@
  */
 package simulation_project;
 
+import Gui.*;
+
 /**
  *
  * @author bebo
@@ -16,6 +18,7 @@ public class Simulation_Project {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        firstPage.main(args);
     }
     
 }
