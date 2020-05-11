@@ -20,13 +20,13 @@ public class processes {
     
     //fun to calculate cumulative , take list  of probailites
     public void calucCumulative(Info info){
-       
+        System.out.println(info.probaility.size());
         for(int i = 0; i < info.probaility.size(); i++){
             double  sum = 0;
             for(int k =i ; k >=0 ; k--){
                 sum+= info.probaility.get(k);
             }
-            info.cumulativeProbaility.add(sum);
+            info.cumulativeProbaility.add(i, sum);
         }
         
     }//end fun
@@ -36,7 +36,7 @@ public class processes {
        
         for(int i = 0; i < info.cumulativeProbaility.size(); i++){
             int intr = (int) (info.cumulativeProbaility.get(i) * 100) ;
-            info.intervalRandomNum.add(intr);
+            info.intervalRandomNum.add(i, intr);
             
         }
         
