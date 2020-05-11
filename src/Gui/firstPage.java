@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package Gui;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import simulation_project.*;
 
 /**
@@ -11,15 +13,27 @@ import simulation_project.*;
  * @author user
  */
 public class firstPage extends javax.swing.JFrame {
+    Info info = new Info();
+    
+    DefaultTableModel tableModel ;
+    processes proc = new processes();
+   
+   
 
+    
     /**
      * Creates new form secondPage
      */
     public firstPage() {
         initComponents();
+        tableModel = new DefaultTableModel();
         this.setSize(1200, 720);
         setLocationRelativeTo(null);
-        
+        jTable1.setModel(tableModel);
+        tableModel.addColumn("Demand");
+        tableModel.addColumn("Probaility");
+        tableModel.addColumn("Cumulative");
+        tableModel.addColumn("Interval");
     }
     
     
@@ -45,6 +59,11 @@ public class firstPage extends javax.swing.JFrame {
 
         add.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         add.setText("Add to table");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
 
         next.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         next.setText("Next Page");
@@ -93,8 +112,8 @@ public class firstPage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(39, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
@@ -104,34 +123,36 @@ public class firstPage extends javax.swing.JFrame {
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18))
+                        .addGap(30, 30, 30))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(add))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 825, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1116, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(66, 66, 66)
-                .addComponent(add)
-                .addGap(43, 43, 43)
-                .addComponent(next)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 200, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(66, 66, 66)
+                        .addComponent(add)
+                        .addGap(43, 43, 43)
+                        .addComponent(next))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         pack();
@@ -146,6 +167,24 @@ public class firstPage extends javax.swing.JFrame {
         this.dispose();
         new finalPage().setVisible(true);
     }//GEN-LAST:event_nextActionPerformed
+
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        info.demand.add(Integer.parseInt(jTextField1.getText()));
+        info.probaility.add(Double.parseDouble(jTextField2.getText()));
+        
+        proc.calucCumulative(info);
+        proc.calucIntervalsNum(info);
+        tableModel.addRow(new Object[]{
+           info.demand.get(tableModel.getRowCount()),
+           info.probaility.get(tableModel.getRowCount()),
+           info.cumulativeProbaility.get(tableModel.getRowCount()),
+           info.intervalRandomNum.get(tableModel.getRowCount())
+           
+        
+        });
+        
+        
+    }//GEN-LAST:event_addActionPerformed
 
     /**
      * @param args the command line arguments

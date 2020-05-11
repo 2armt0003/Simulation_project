@@ -13,9 +13,9 @@ import java.util.ArrayList;
  */
 public class Info {
     public ArrayList<Integer> demand = new ArrayList<Integer>();
-    public ArrayList<Integer> frequancy = new ArrayList<Integer>();
+   
     public ArrayList<Double> probaility = new ArrayList<Double>();
-    public int numOfInputs;
+  
     
     public int  avarageDemand;
     public int ecpectedDemand;
