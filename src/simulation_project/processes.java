@@ -51,18 +51,23 @@ public class processes {
             Random rand = new Random();
            int randNumber = rand.nextInt((100 - 0) + 1) + 0;
            info.randmNumber.add(randNumber);
-           
+           System.out.println(randNumber);
             
-           for(int k = 0;  k < info.numOfDays; k++){
-               if(i == 0){
-                   if(randNumber >= 0 && randNumber <= info.intervalRandomNum.get(i)){
-                       sum+= info.demand.get(i);
-                       info.SimulatedDalyDemand.add(info.demand.get(i));}
+           for(int k = 0;  k < info.demand.size(); k++){
+               if(k == 0){
+                   if(randNumber >= 0 && randNumber <= info.intervalRandomNum.get(k)){
+                       sum+= info.demand.get(k);
+                       info.SimulatedDalyDemand.add(info.demand.get(k));
+                       
+                       
+                       
+                   }
                    
                }else{
-                    if(randNumber > info.intervalRandomNum.get(i-1)&& randNumber <= info.intervalRandomNum.get(i))
+                   System.out.println(k);
+                    if(randNumber > info.intervalRandomNum.get(k-1)&& randNumber <= info.intervalRandomNum.get(k))
                     {sum+=  info.demand.get(i);
-                       info.SimulatedDalyDemand.add(info.demand.get(i));}
+                       info.SimulatedDalyDemand.add(info.demand.get(k));}
                     else 
                         continue;
                    
@@ -70,11 +75,13 @@ public class processes {
            
         
             }
-           info.avarageDemand = sum / info.numOfDays ;
+          
            
         }
+        info.avarageDemand = sum / info.numOfDays ;
+        
         int sumexp = 0;
-        for(int i = 0 ; i< info.numOfDays ; i++){
+        for(int i = 0 ; i< info.demand.size(); i++){
             sumexp += info.demand.get(i) * info.probaility.get(i);
                 
          }

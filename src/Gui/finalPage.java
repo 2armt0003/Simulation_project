@@ -226,12 +226,11 @@ public class finalPage extends javax.swing.JFrame {
      
           
         
-        for(int i =1 ; i <= info.numOfDays ; i++){
+        for(int i =0 ; i < info.SimulatedDalyDemand.size(); i++){
             tableModel.addRow(new Object[]{
                 i,
                 info.randmNumber.get(i),
-                info.randmNumber.get(i),
-                info.SimulatedDalyDemand.get(i)
+               info.SimulatedDalyDemand.get(i)
            
         
         });  }
