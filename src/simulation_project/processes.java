@@ -46,17 +46,18 @@ public class processes {
     public void calucSimulatedDalyDemand(Info info){
         
         int sum = 0; 
+        
         for(int i = 0; i < info.numOfDays; i++){
             Random rand = new Random();
            int randNumber = rand.nextInt((100 - 0) + 1) + 0;
            info.randmNumber.add(randNumber);
            
-                   
-           for(int k = 0; i < info.numOfDays; k++){
+            
+           for(int k = 0;  k < info.numOfDays; k++){
                if(i == 0){
-                   if(randNumber >= 0 && randNumber <= info.intervalRandomNum.get(i))
+                   if(randNumber >= 0 && randNumber <= info.intervalRandomNum.get(i)){
                        sum+= info.demand.get(i);
-                       info.SimulatedDalyDemand.add(info.demand.get(i));
+                       info.SimulatedDalyDemand.add(info.demand.get(i));}
                    
                }else{
                     if(randNumber > info.intervalRandomNum.get(i-1)&& randNumber <= info.intervalRandomNum.get(i))

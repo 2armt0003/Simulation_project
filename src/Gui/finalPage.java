@@ -220,25 +220,24 @@ public class finalPage extends javax.swing.JFrame {
     }//GEN-LAST:event_txtevActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      this.info.numOfDays = Integer.parseInt(jTextField1.getText());
-        System.out.println(this.info.numOfDays);
-//       //this.proc.calucSimulatedDalyDemand(info);
-//     
-//          
-//        //info.numOfDays = Integer.parseInt(jTextField1.getText()); bjuhyujyh
-//       // proc.calucSimulatedDalyDemand(info);
-////        for(int i =1 ; i <= info.numOfDays ; i++){
-////            tableModel.addRow(new Object[]{
-////                i,
-////                info.randmNumber.get(i),
-////                info.randmNumber.get(i),
-////                info.SimulatedDalyDemand.get(i)
-////           
-////        
-////        });
-////       
-//       txtav.setText(Integer.toString(info.avarageDemand));
-//       txtev.setText(Integer.toString(info.ecpectedDemand));
+        System.out.println(info);
+        this.info.numOfDays = Integer.parseInt(jTextField1.getText());
+      this.proc.calucSimulatedDalyDemand(info);
+     
+          
+        
+        for(int i =1 ; i <= info.numOfDays ; i++){
+            tableModel.addRow(new Object[]{
+                i,
+                info.randmNumber.get(i),
+                info.randmNumber.get(i),
+                info.SimulatedDalyDemand.get(i)
+           
+        
+        });  }
+       
+       txtav.setText(Integer.toString(info.avarageDemand));
+       txtev.setText(Integer.toString(info.ecpectedDemand));
     }//GEN-LAST:event_jButton1ActionPerformed
         
     /**

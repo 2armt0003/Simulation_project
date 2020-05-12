@@ -164,7 +164,7 @@ public class firstPage extends javax.swing.JFrame {
 
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
         // TODO add your handling code here:
-        String s = "atba3ttet yastaaaaaaaaaa";
+        System.out.println(info);
         this.dispose();
         new finalPage(info).setVisible(true);
     }//GEN-LAST:event_nextActionPerformed
