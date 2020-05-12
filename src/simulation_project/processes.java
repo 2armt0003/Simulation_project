@@ -44,11 +44,14 @@ public class processes {
     
     //fun to simulated daly demand  , take list  of randm num and num of days to simulate 
     public void calucSimulatedDalyDemand(Info info){
-        Random rand = new Random();
+        
         int sum = 0; 
         for(int i = 0; i < info.numOfDays; i++){
+            Random rand = new Random();
            int randNumber = rand.nextInt((100 - 0) + 1) + 0;
            info.randmNumber.add(randNumber);
+           
+                   
            for(int k = 0; i < info.numOfDays; k++){
                if(i == 0){
                    if(randNumber >= 0 && randNumber <= info.intervalRandomNum.get(i))

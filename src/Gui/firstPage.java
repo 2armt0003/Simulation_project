@@ -13,7 +13,7 @@ import simulation_project.*;
  * @author user
  */
 public class firstPage extends javax.swing.JFrame {
-    Info info = new Info();
+     Info info = new Info();
     
     DefaultTableModel tableModel ;
     processes proc = new processes();
@@ -164,6 +164,7 @@ public class firstPage extends javax.swing.JFrame {
 
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
         // TODO add your handling code here:
+        String s = "atba3ttet yastaaaaaaaaaa";
         this.dispose();
         new finalPage(info).setVisible(true);
     }//GEN-LAST:event_nextActionPerformed

@@ -12,20 +12,20 @@ import java.util.ArrayList;
  * @author bebo
  */
 public class Info {
-    public ArrayList<Integer> demand = new ArrayList<Integer>();
+    public  ArrayList<Integer> demand = new ArrayList<Integer>();
     
-    public ArrayList<Integer> randmNumber = new ArrayList<Integer>();
+    public  ArrayList<Integer> randmNumber = new ArrayList<Integer>();
     
-    public ArrayList<Integer> SimulatedDalyDemand = new ArrayList<Integer>();
+    public  ArrayList<Integer> SimulatedDalyDemand = new ArrayList<Integer>();
    
-    public ArrayList<Double> probaility = new ArrayList<Double>();
+    public  ArrayList<Double> probaility = new ArrayList<Double>();
   
     
-    public int  avarageDemand;
-    public int ecpectedDemand;
+    public  int  avarageDemand;
+    public  int ecpectedDemand;
     
-    public ArrayList<Double> cumulativeProbaility = new ArrayList<Double>();
-    public ArrayList<Integer> intervalRandomNum = new ArrayList<Integer>();
+    public  ArrayList<Double> cumulativeProbaility = new ArrayList<Double>();
+    public  ArrayList<Integer> intervalRandomNum = new ArrayList<Integer>();
     
-    public int numOfDays;
+    public  int numOfDays;
 }

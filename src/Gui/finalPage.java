@@ -12,26 +12,48 @@ import javax.swing.table.DefaultTableModel;
  * @author user
  */
 public class finalPage extends javax.swing.JFrame {
-    static Info info ;
+     Info info ;
     processes proc =new processes();
     DefaultTableModel tableModel ;
+    
+    
     /**
      * Creates new form finalPage
      */
-    public finalPage(Info info ) {
+    public finalPage() {
+        initComponents();
+        
+        this.setSize(1200, 720);
+        tableModel = new DefaultTableModel();
+        setLocationRelativeTo(null);
+        txtev.setEditable(false);
+        txtav.setEditable(false);
+     
+       jTable1.setModel(tableModel);
+        tableModel.addColumn("Day");
+        tableModel.addColumn("Randum Numbers");
+        tableModel.addColumn("Simulated Daly Demand");
+        
+    }
+    
+    public finalPage(Info infoo) {
         initComponents();
         tableModel = new DefaultTableModel();
         this.setSize(1200, 720);
         setLocationRelativeTo(null);
         txtev.setEditable(false);
         txtav.setEditable(false);
-        this.info = info;
+        
         jTable1.setModel(tableModel);
         tableModel.addColumn("Day");
         tableModel.addColumn("Randum Numbers");
         tableModel.addColumn("Simulated Daly Demand");
-        
+        this.info = infoo;
+        if(info != null)
+            System.out.println("tl3t m4 null yastaaaaa");
+       
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -198,21 +220,25 @@ public class finalPage extends javax.swing.JFrame {
     }//GEN-LAST:event_txtevActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        info.numOfDays = Integer.parseInt(jTextField1.getText());
-        proc.calucSimulatedDalyDemand(info);
-//        for(int i =1 ; i <= info.numOfDays ; i++){
-//            tableModel.addRow(new Object[]{
-//                i,
-//                info.randmNumber.get(i),
-//                info.randmNumber.get(i),
-//                info.SimulatedDalyDemand.get(i)
-//           
-//        
-//        });
-//       }
-       txtav.setText(Integer.toString(info.avarageDemand));
-       txtev.setText(Integer.toString(info.ecpectedDemand));
-       
+      this.info.numOfDays = Integer.parseInt(jTextField1.getText());
+        System.out.println(this.info.numOfDays);
+//       //this.proc.calucSimulatedDalyDemand(info);
+//     
+//          
+//        //info.numOfDays = Integer.parseInt(jTextField1.getText()); bjuhyujyh
+//       // proc.calucSimulatedDalyDemand(info);
+////        for(int i =1 ; i <= info.numOfDays ; i++){
+////            tableModel.addRow(new Object[]{
+////                i,
+////                info.randmNumber.get(i),
+////                info.randmNumber.get(i),
+////                info.SimulatedDalyDemand.get(i)
+////           
+////        
+////        });
+////       
+//       txtav.setText(Integer.toString(info.avarageDemand));
+//       txtev.setText(Integer.toString(info.ecpectedDemand));
     }//GEN-LAST:event_jButton1ActionPerformed
         
     /**
@@ -245,7 +271,7 @@ public class finalPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new finalPage(info).setVisible(true);
+                new finalPage().setVisible(true);
             }
         });
     }
