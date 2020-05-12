@@ -21,8 +21,8 @@ public class Info {
     public  ArrayList<Double> probaility = new ArrayList<Double>();
   
     
-    public  int  avarageDemand;
-    public  int ecpectedDemand;
+    public  double  avarageDemand;
+    public  double ecpectedDemand;
     
     public  ArrayList<Double> cumulativeProbaility = new ArrayList<Double>();
     public  ArrayList<Integer> intervalRandomNum = new ArrayList<Integer>();

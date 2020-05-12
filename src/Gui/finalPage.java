@@ -235,8 +235,8 @@ public class finalPage extends javax.swing.JFrame {
         
         });  }
        
-       txtav.setText(Integer.toString(info.avarageDemand));
-       txtev.setText(Integer.toString(info.ecpectedDemand));
+       txtav.setText(Double.toString(info.avarageDemand));
+       txtev.setText(Double.toString(info.ecpectedDemand));
     }//GEN-LAST:event_jButton1ActionPerformed
         
     /**

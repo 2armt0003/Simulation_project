@@ -45,7 +45,7 @@ public class processes {
     //fun to simulated daly demand  , take list  of randm num and num of days to simulate 
     public void calucSimulatedDalyDemand(Info info){
         
-        int sum = 0; 
+        double sum = 0; 
         
         for(int i = 0; i < info.numOfDays; i++){
             Random rand = new Random();
@@ -66,7 +66,7 @@ public class processes {
                }else{
                    System.out.println(k);
                     if(randNumber > info.intervalRandomNum.get(k-1)&& randNumber <= info.intervalRandomNum.get(k))
-                    {sum+=  info.demand.get(i);
+                    {sum+=  info.demand.get(k);
                        info.SimulatedDalyDemand.add(info.demand.get(k));}
                     else 
                         continue;
@@ -78,11 +78,11 @@ public class processes {
           
            
         }
-        info.avarageDemand = sum / info.numOfDays ;
+        info.avarageDemand = sum / (double)info.numOfDays ;
         
-        int sumexp = 0;
+        double sumexp = 0;
         for(int i = 0 ; i< info.demand.size(); i++){
-            sumexp += info.demand.get(i) * info.probaility.get(i);
+            sumexp += info.demand.get(i) * (double)info.probaility.get(i);
                 
          }
         
