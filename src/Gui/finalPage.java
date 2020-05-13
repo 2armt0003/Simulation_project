@@ -6,7 +6,9 @@
 package Gui;
 import simulation_project.*;
 import Gui.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.text.DecimalFormat;
 /**
  *
  * @author user
@@ -27,12 +29,13 @@ public class finalPage extends javax.swing.JFrame {
         tableModel = new DefaultTableModel();
         setLocationRelativeTo(null);
         txtev.setEditable(false);
-        txtav.setEditable(false);
-     
+        txtav.setEditable(false);     
        jTable1.setModel(tableModel);
         tableModel.addColumn("Day");
         tableModel.addColumn("Randum Numbers");
         tableModel.addColumn("Simulated Daly Demand");
+        
+        
         
     }
     
@@ -49,8 +52,6 @@ public class finalPage extends javax.swing.JFrame {
         tableModel.addColumn("Randum Numbers");
         tableModel.addColumn("Simulated Daly Demand");
         this.info = infoo;
-        if(info != null)
-            System.out.println("tl3t m4 null yastaaaaa");
        
     }
     
@@ -74,8 +75,10 @@ public class finalPage extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        Clear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         home.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         home.setText("Home Page");
@@ -139,7 +142,21 @@ public class finalPage extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
+
+        Clear.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        Clear.setText("Clear");
+        Clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,25 +164,30 @@ public class finalPage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(25, 25, 25)
-                            .addComponent(jLabel2)
-                            .addGap(21, 21, 21)
-                            .addComponent(txtav, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtev, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(52, 52, 52)
+                                    .addComponent(jLabel1))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(93, 93, 93)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jTextField1)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                                        .addComponent(Clear, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))))
+                            .addGap(56, 56, 56))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(52, 52, 52)
-                            .addComponent(jLabel1))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(93, 93, 93)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField1)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))))
+                            .addContainerGap()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtev, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtav, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(home)))
@@ -185,15 +207,17 @@ public class finalPage extends javax.swing.JFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(Clear)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtav, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtav, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtev, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(222, 222, 222))
+                            .addComponent(jLabel3)
+                            .addComponent(txtev, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(194, 194, 194))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 98, Short.MAX_VALUE))
         );
@@ -228,16 +252,41 @@ public class finalPage extends javax.swing.JFrame {
         
         for(int i =0 ; i < info.SimulatedDalyDemand.size(); i++){
             tableModel.addRow(new Object[]{
-                i,
+                i+1,
                 info.randmNumber.get(i),
                info.SimulatedDalyDemand.get(i)
            
         
         });  }
        
-       txtav.setText(Double.toString(info.avarageDemand));
-       txtev.setText(Double.toString(info.ecpectedDemand));
+       txtav.setText(new DecimalFormat("0.00").format(info.avarageDemand));
+       txtev.setText(new DecimalFormat("0.00").format(info.ecpectedDemand));
+       jTextField1.setText("");
+       jTextField1.setEnabled(false);
+       jButton1.setEnabled(false);
+      
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
+        // TODO add your handling code here:
+        int re = tableModel.getRowCount();
+        for (int i = re-1 ; i >= 0; i--) {
+            tableModel.removeRow(i);
+            info.SimulatedDalyDemand.remove(i);
+        }
+        txtav.setText("");
+        jTextField1.setEnabled(true);
+        jButton1.setEnabled(true);
+    }//GEN-LAST:event_ClearActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        boolean a = jTable1.isEditing();
+        if(a==false)
+        {
+            JOptionPane.showMessageDialog(this, "You Canot Edit In table");
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
         
     /**
      * @param args the command line arguments
@@ -275,6 +324,7 @@ public class finalPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Clear;
     private javax.swing.JButton home;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
