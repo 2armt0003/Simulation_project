@@ -33,10 +33,17 @@ public class processes {
     
     //fun to calculate cumulative , take list  of probailites
     public void calucIntervalsNum(Info info){
-       
+        
         for(int i = 0; i < info.cumulativeProbaility.size(); i++){
             int intr = (int) (info.cumulativeProbaility.get(i) * 100) ;
             info.intervalRandomNum.add(i, intr);
+            String range;
+            if(i == 0)
+                 range =   " 1 to " + info.intervalRandomNum.get(i) ;
+            else
+                range = (info.intervalRandomNum.get(i-1)+1) + " to " + info.intervalRandomNum.get(i) ;
+            
+            info.intervalRandomNumRange.add(i, range);
             
         }
         

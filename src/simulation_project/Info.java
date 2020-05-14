@@ -26,6 +26,7 @@ public class Info {
     
     public  ArrayList<Double> cumulativeProbaility = new ArrayList<Double>();
     public  ArrayList<Integer> intervalRandomNum = new ArrayList<Integer>();
+    public  ArrayList<String> intervalRandomNumRange = new ArrayList<String>();
     
     public  int numOfDays;
 }

@@ -273,6 +273,7 @@ public class finalPage extends javax.swing.JFrame {
         for (int i = re-1 ; i >= 0; i--) {
             tableModel.removeRow(i);
             info.SimulatedDalyDemand.remove(i);
+            info.randmNumber.remove(i);
         }
         txtav.setText("");
         jTextField1.setEnabled(true);

@@ -183,21 +183,48 @@ public class firstPage extends javax.swing.JFrame {
     }//GEN-LAST:event_nextActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        info.demand.add(Integer.parseInt(jTextField1.getText()));
-        info.probaility.add(Double.parseDouble(jTextField2.getText()));
-        
-        proc.calucCumulative(info);
-        proc.calucIntervalsNum(info);
-        tableModel.addRow(new Object[]{
-           info.demand.get(tableModel.getRowCount()),
-           info.probaility.get(tableModel.getRowCount()),
-           info.cumulativeProbaility.get(tableModel.getRowCount()),
-           info.intervalRandomNum.get(tableModel.getRowCount())
-           
-        
-        });
-        jTextField1.setText("");
-        jTextField2.setText("");
+       
+       if( Integer.parseInt(jTextField1.getText()) >= 0   ){
+           if(Double.parseDouble(jTextField2.getText())>= 0 && Double.parseDouble(jTextField2.getText()) <1){
+               info.demand.add(Integer.parseInt(jTextField1.getText()));
+               info.probaility.add(Double.parseDouble(jTextField2.getText()));
+               proc.calucCumulative(info);
+               System.out.println(info.cumulativeProbaility.get(tableModel.getRowCount()));
+               if(info.cumulativeProbaility.get(tableModel.getRowCount()) <= 1.0){
+                    
+                    proc.calucIntervalsNum(info);
+                    tableModel.addRow(new Object[]{
+                       info.demand.get(tableModel.getRowCount()),
+                       info.probaility.get(tableModel.getRowCount()),
+                       info.cumulativeProbaility.get(tableModel.getRowCount()),
+                       info.intervalRandomNumRange.get(tableModel.getRowCount())
+
+
+                    });
+                    jTextField1.setText("");
+                   jTextField2.setText("");
+               }//f3
+               else{
+                   JOptionPane.showMessageDialog(this, " sumtion of probarty must equal == 1 ");
+                   info.cumulativeProbaility.remove(tableModel.getRowCount()-1);
+                   info.demand.remove(tableModel.getRowCount()-1);
+                   info.probaility.remove(tableModel.getRowCount()-1);
+                   jTextField1.setText("");
+                   jTextField2.setText("");
+               }
+           }//f2
+            else{
+               JOptionPane.showMessageDialog(this, " Probilty must be grater than or equal zero and less than one ");
+                //jTextField1.setText("");
+                jTextField2.setText("");
+           }
+       }//f1
+       else{
+          JOptionPane.showMessageDialog(this, "Demand Must be grater than or equal zero, and Probilty must be grater than or equal zero and less than one ");
+           jTextField1.setText("");
+           jTextField2.setText("");
+       }
+      
         
         
     }//GEN-LAST:event_addActionPerformed
