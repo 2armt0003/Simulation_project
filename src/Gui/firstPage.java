@@ -108,7 +108,18 @@ public class firstPage extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setText("Monte Carlo Project To Help in Simulate");
@@ -146,7 +157,7 @@ public class firstPage extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -175,10 +186,16 @@ public class firstPage extends javax.swing.JFrame {
 
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
         // TODO add your handling code here:
-
-            this.dispose();
-            new finalPage(info).setVisible(true);
-     
+        
+         if(info.cumulativeProbaility.get(tableModel.getRowCount()-1) == 1.0)
+         {
+             this.dispose();
+             new finalPage(info).setVisible(true);
+         }
+         else{
+          JOptionPane.showMessageDialog(this, "cumulativeProbability must be equal 1 to simulate");
+       }
+           
         
     }//GEN-LAST:event_nextActionPerformed
 
@@ -206,9 +223,9 @@ public class firstPage extends javax.swing.JFrame {
                }//f3
                else{
                    JOptionPane.showMessageDialog(this, " sumtion of probarty must equal == 1 ");
-                   info.cumulativeProbaility.remove(tableModel.getRowCount()-1);
-                   info.demand.remove(tableModel.getRowCount()-1);
-                   info.probaility.remove(tableModel.getRowCount()-1);
+                   info.cumulativeProbaility.remove(tableModel.getRowCount());
+                   info.demand.remove(tableModel.getRowCount());
+                   info.probaility.remove(tableModel.getRowCount());
                    jTextField1.setText("");
                    jTextField2.setText("");
                }
@@ -228,6 +245,16 @@ public class firstPage extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_addActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:boolean a = jTable1.isEditing();
+        boolean a = jTable1.isEditing();
+        if(a==false)
+        {
+            JOptionPane.showMessageDialog(this, "You Canot Edit In table");
+        }
+        
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
