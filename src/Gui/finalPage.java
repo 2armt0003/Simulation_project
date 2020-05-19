@@ -149,6 +149,11 @@ public class finalPage extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         Clear.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         Clear.setText("Clear");
@@ -182,7 +187,7 @@ public class finalPage extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jLabel3)
-                                    .addGap(18, 18, 18)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtev, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jLabel2)
@@ -244,21 +249,14 @@ public class finalPage extends javax.swing.JFrame {
     }//GEN-LAST:event_txtevActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println(info);
-        this.info.numOfDays = Integer.parseInt(jTextField1.getText());
+      this.info.numOfDays = Integer.parseInt(jTextField1.getText());
       this.proc.calucSimulatedDalyDemand(info);
-     
-          
-        
         for(int i =0 ; i < info.SimulatedDalyDemand.size(); i++){
             tableModel.addRow(new Object[]{
                 i+1,
                 info.randmNumber.get(i),
                info.SimulatedDalyDemand.get(i)
-           
-        
         });  }
-       
        txtav.setText(new DecimalFormat("0.00").format(info.avarageDemand));
        txtev.setText(new DecimalFormat("0.00").format(info.ecpectedDemand));
        jTextField1.setText("");

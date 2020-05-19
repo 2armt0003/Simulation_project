@@ -26,6 +26,7 @@ public class processes {
             for(int k =i ; k >=0 ; k--){
                 sum+= info.probaility.get(k);
             }
+            sum = Math.round(sum*100.0)/100.0;
             info.cumulativeProbaility.add(i, sum);
         }
         
