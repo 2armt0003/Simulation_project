@@ -128,7 +128,7 @@ public class firstPage extends javax.swing.JFrame {
         jLabel3.setText("Monte Carlo Project To Help in Simulate");
 
         Clear.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        Clear.setText("Clear all table");
+        Clear.setText("Clear last row");
         Clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ClearActionPerformed(evt);
@@ -277,6 +277,7 @@ public class firstPage extends javax.swing.JFrame {
             info.probaility.remove(i);
             info.cumulativeProbaility.remove(i);
             info.intervalRandomNumRange.remove(i);
+            break;
         }
         jTextField1.setText("");
         jTextField2.setText("");
